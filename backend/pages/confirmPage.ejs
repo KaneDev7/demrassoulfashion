@@ -1,0 +1,41 @@
+!<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/asset/fontawesome/CSS/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Chaussures</title>
+</head>
+<body>
+   
+    <nav>
+        <a  href="/" >Vetements </a>
+        <a  href="/chaussure" >Chaussure </a>
+        <a href="/accssessoire" >Sac & Accessoire </a>
+        <a   href="/param" >Paramètre </a>
+        <a class="deconnection" href="/deconnecter">Déconnecter</a>
+    </nav>
+    <% if (message) { %>
+     <p class="message"> <%= message %> ! </p>
+    <% } %>
+
+    <style>
+        .message{
+            font-size: 25px;
+            margin-left: 10px;
+            margin-top: 50px;
+            color: green;
+        }
+    </style>
+
+ <script src="/js/script_chaussure.js"></script>
+    <script src="/js/serch.js"></script> 
+
+
+</body>
+</html>

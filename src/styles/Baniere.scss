@@ -1,0 +1,143 @@
+.Baniere{
+    width: $widthGolbale;
+    max-width: 1200px;
+    height: 45vh;
+    margin: 40px auto 0 auto;
+    background: #f8f8f8;
+    border-radius: 3px;
+    animation: opac 1s ease-in;
+   // background: linear-gradient(90deg, rgb(240, 240, 204) 8%, rgb(211, 211, 164) 75%);
+    box-shadow: 0 0 3px #00000010 ;
+    .Section_baniere{
+        width: $widthGolbale;
+        height:100%;
+        margin: 0 auto;
+        padding: 20px;
+        @include flex;
+        position: relative;
+      
+       // justify-content: space-around ;
+        .baniere_text{
+           // width: 30vw;
+            h1{
+             font-size: 4vw;
+            font-family: Jost,sans-serif;
+            color: $black_leger;
+            text-shadow: 0 0 2px;
+           
+            }
+          
+            p{
+                margin-bottom: 20px;
+                font-size: 18px;
+                color: $black_leger;
+            }
+  
+        }
+        img{
+            width: 25vw;
+            height: 110%;
+            object-fit: cover;
+            animation: opac .5s;
+            animation: scal .7s ease-in-out;
+
+        }
+    }
+}
+
+
+// RESPOSDIVE
+
+@media only screen and (max-width: 950px) {
+    .Baniere{
+        width: 90%;
+
+        .Section_baniere{
+            width: 90%;
+        }
+        
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+    .Baniere{
+        width: 100%;
+        height: 60vh;
+        margin-top: 0;
+        padding: 0;
+        .Section_baniere{
+            .baniere_text{
+                h1{
+                    font-size: 13vw;
+                }
+            }
+        }
+       
+        .SACS{
+            background: url('../../src/images/collection\ sac\ et\ accessoire/sac a dos.jpg');
+        }
+        .VETEMENTS{
+            background: url('../../src/images/banieres/vetement.png');
+        }
+        .CHAUSSURES{
+            background: url('../../src/images/collection\ chaussures/sport.jpg');
+        }
+        .ACCESSOIRES{
+            background: url('../../src/images/collection\ sac\ et\ accessoire/bijoux.jpg');
+
+        }
+        .Section_baniere{
+            width: 100%;
+            height: 100%;
+           background-repeat: no-repeat;
+           background-size: cover;
+           position: relative;
+            .baniere_text{   
+                width: 100%;
+                height: 100%;
+                @include flex_center;
+                flex-direction: column;
+                position: absolute;
+                left: 0;
+                top: 0;
+                
+                background: #00000083;
+                text-align: center;
+                h1{
+                    color: white;
+                }   
+                p{
+                    color: white;
+                    width: 60%;
+                }
+                .Bouton{
+                    background: white;
+                    border: none;
+                    a{
+                    color: $black_leger;
+                  }
+                }
+            }
+            .Social_icons{
+                left: 50%;
+                transform: translateX(-50%);
+                .icon{
+                    background: white;
+                    &::after{
+                        background: white;
+                    }
+                    i{
+                        color: $black_leger;
+                    }
+                }
+            }
+            img{
+                width: 40vw;
+                height: 60vw;
+                display: none;
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,48 @@
+
+@import './Settings.scss';
+@import './styles/Topbar.scss';
+@import './styles/Baniere.scss';
+@import './styles/Produits.scss';
+@import './styles/NewProduct.scss';
+@import './styles/ProductDetail.scss';
+@import './styles/MonPaget.scss';
+@import './styles/About.scss';
+
+
+
+@font-face {
+    font-family: Jost;
+    src: url(../public/jost/Jost-Regular.ttf);
+}
+
+@font-face {
+    font-family: Great Vibes;
+    src: url(../public/Great_Vibes/GreatVibes-Regular.ttf);
+}
+
+
+@font-face {
+    font-family: Comfortaa;
+    src: url(../public/Comfortaa/static/Comfortaa-Regular.ttf);
+}
+
+@font-face {
+    font-family: Aladin;
+    src: url(../public/Aladin/Aladin-Regular.ttf);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: Jost,sans-serif;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+body{
+  // background: rgb(255, 255, 255);
+
+}

@@ -1,0 +1,147 @@
+.MonPagnet_content {
+    max-width: 1000px;
+    margin: 130px auto 50px auto;
+    @include flex_center;
+    flex-direction: column;
+    opacity: 0;
+    animation: opac forwards .5s;
+
+    .Title {
+        position: relative;
+        text-align: center;
+    }
+
+    .pagnetItem {
+        width: 100%;
+        @include flex;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        padding: 30px 50px;
+        border-bottom: 1px $separation_border solid;
+        @media only screen and (max-width: 550px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 30px;
+         }
+        .pagnetItem_left {
+            @include flex;
+            justify-content: flex-start;
+            gap: 20px;
+
+            .pagnetItem_image {
+                width: 90px;
+                height: 90px;
+                border-radius: 7px;
+                @media only screen and (max-width: 875px) {
+                    width:70px;
+                    height:70px;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 7px;
+                    object-fit: cover;
+                }
+            }
+            .pagnetItem_text{
+                color: $black_leger;
+                p,span{
+                    @media only screen and (max-width: 875px) {
+                        font-size: 15px;
+                    }
+                }
+               
+            }
+            .pagnetItem_prix_taille{
+                span{
+                    color: $color_primary;
+                }
+            }
+            .pagnetItem_prix{
+                span{
+                    color: $color_primary;
+                }
+            }
+        }
+
+        .pagnetItem_right{
+            @include flex;
+            gap: 20px;
+            @media only screen and (max-width: 770px) {
+                flex-direction: column-reverse;
+                align-items: flex-end;
+            }
+            @media only screen and (max-width: 550px) {
+                flex-direction: row-reverse;
+                align-items: flex-end;
+             }
+            .Bouton_whatsap{
+                @media only screen and (max-width: 875px) {
+                    min-width: 100px;
+                }
+                @media only screen and (max-width: 770px) {
+                    width: 130px;
+
+                }
+            }
+            .choose_Quantity {
+                width: 120px;
+                height: 40px;
+                @include flex;
+                justify-content: space-evenly;
+                background: $color_primary;
+                color: $color_secondary;
+                font-size: 18px ;
+                border-radius: 3px;
+                @media only screen and (max-width: 770px) {
+                    width: 130px;
+
+                }
+                
+                span {
+                    cursor: pointer;
+                    font-size: 20px;
+                    &:first-child{
+                        transform: translateY(-7px);
+                    }
+                }
+
+                .quantity {
+                    font-size: 17px;
+                }
+            }
+        }
+        .removeCartBtn{
+            color: $gray_leger;
+            @media only screen and (max-width: 550px) {
+               position: absolute;
+               right: 20px;
+               top: 20px;
+            }
+            i{
+                pointer-events: none;
+            }
+            &:hover{
+            color: $black_leger;
+            }
+        }
+    }
+    .commandAll{
+        margin-top: 40px;
+        .Bouton_whatsap{
+            width: 300px;
+            opacity: .9;
+            color: white;
+            background: $color_primary;
+            &:hover{
+                opacity: 1;
+            }
+            span{
+                color: white;
+            }
+
+        }
+    }
+}

@@ -1,0 +1,192 @@
+!<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/asset/fontawesome/CSS/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Chaussures</title>
+</head>
+<body>
+   
+    <nav>
+        <a  href="/" >Vetements </a>
+        <a class="navActivf" href="/chaussure" >Chaussure </a>
+        <a href="/accssessoire" >Sac & Accessoire </a>
+        <a  href="/param" >Paramètre </a>
+        <a class="deconnection" href="/deconnecter">Déconnecter</a>
+    </nav>
+   <input type="text" id="recherche" placeholder="recherche" >
+
+   
+    <div class="formBox">
+        <sapn class="closeBtn"><i class="fa-solid fa-x"></i></sapn>
+        <h2>Ajouter un article pour les chaussures</h2>
+        <div class="formBoxContent">
+            <img class="image" src="" alt="">
+
+            <form action="/upload/article_chaussures/chaussure" method="post" enctype="multipart/form-data">
+                <input hidden type="number" id="input_id" name="id" > <br>
+                <input name="foo" required type="file" class="imageSelect"  /> <br>
+        
+                <input type="text" required name="nom" id="nom" placeholder="Nom de l'article"> <br>
+
+                <select name="categorie" id="categorie">
+                    <option value="deffaut">Selectionner la categorie--</option>
+                    <option value="sandale">sandale</option>
+                    <option value="talons">Talon </option>
+                    <option value="chaussure de sport">Chaussure de sport</option>
+                </select> <br>
+
+
+                <input type="color" name="couleur", id="couleur">
+                <input type="text" name="colorName" id="colorName" placeholder="Nom du couleur">
+
+                <!--
+                 <select name="couleur" id="couleur">
+                    <option value="deffaut">Selectionner la couleur--</option>
+                    <option value="blue">Bleu</option>
+                    <option value="red">Rouge</option>
+                    <option value="yellow">Jaune</option>
+                    <option value="green">Vert</option>
+                    <option value="black">Noir</option>
+                    <option value="white">Blanc</option>
+                    <option value="brown">Marron</option>
+                    <option value="gray">Gris</option>
+                    <option value="pink">Rose</option>
+                    <option value="purple">Violet</option>
+                    <option value="orange">Orange</option>
+                    <option value="beige">Beige</option>
+                    <option value="turquoise">Turquoise</option>
+                    <option value="gold">Or</option>
+                    <option value="silver">Argent</option>
+                    <option value="olive">Olive</option>
+                    <option value="navy">Bleu marine</option>
+                    <option value="burgundy">Bordeaux</option>
+                    <option value="salmon">Saumon</option>
+                    <option value="mint">Menthe</option>
+                  </select><br>
+                -->
+          
+
+                  <select  name="taille" id="taille">
+                    <option value="deffaut">Selectionner la taille--</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                  </select><br>
+                  
+                
+                  <select name="saison" id="saison">
+                    <option value="deffaut">Selectionner la saison--</option>
+                    <option value="ete">Ete</option>
+                    <option value="hivert">Hivert</option>
+                  </select><br>
+
+                <input type="date" name="date" id="date" placeholder="date"> <br>
+                <textarea name="description" required id="description" cols="30" rows="10" placeholder="description"></textarea> <br>
+                <input type="number" name="prix" id="prix" placeholder="Prix de l'article"> <br>
+
+                <input type="submit" id="submit" value="importer">
+            </form>
+
+        </div>
+    </div>
+    <h1>Galery des chaussures</h1>
+    <% if (resultats.length > 0) { %>
+
+    <span class="firstArticle_id" hidden id="<%=resultats[0].id%> "> </span>
+    <% } %>
+
+    
+    <div class="galery">
+        <ul class="cards">
+            <span class="ajout_image"><i class="fa-solid fa-plus"></i></span>
+
+    <% if (resultats.length > 0) { %>
+           
+            <% resultats.forEach((resultat, i) => { %>
+                <li class="card ">
+                    <span hidden class="productName"><%= resultat.description %></span>
+                    <span hidden class="category"><%= resultat.categorie %></span>
+                    <span hidden class="nom"><%= resultat.nom %></span>
+                
+                <span class="id_image" hidden id="<%= resultat.id %>"></span>
+                    <img class="image_card " src="./../images/<%=resultat.imgSrc%>" alt="">
+
+                </li>
+            <% }) %>
+            <% } %>
+          
+        </ul>
+
+    <% if (resultats.length > 0) { %>
+
+        <div class="image_infos">
+        <span class="ajout_image moreImage" title="ajouter plus d'article pour ce produit"><i class="fa-solid fa-plus"></i></span>
+            <img class="image_select " src="/<%=resultats[0].imgSrc%>" alt="">
+            <h2 ><%=resultats[0].nom%></h2>
+            <ul class="text">
+                <li class="text_card">
+                    <p>categorie  :  <span><%=resultats[0].categorie%> </span> </p>
+                </li>
+
+                <li class="text_card">
+                    <p>taille   :  <span><%=resultats[0].taille %> </span> </p>
+                </li>
+
+                <li class="text_card">
+                    <p>couleur    :  <span><%=resultats[0].couleur %> </span> </p>
+                </li>
+
+                <li class="text_card">
+                    <p>saison :  <span><%=resultats[0].saison  %> </span> </p>
+                </li>
+
+                <li class="text_card" >
+                    <p>date :  <span><%=new Date(resultats[0].date).toLocaleDateString()  %> </span> </p>
+                </li>
+
+                <li class="text_card">
+                    <p>prix :  <span><%=resultats[0].prix  %> </span> </p>
+                </li>
+
+                <li class="text_card">
+                    <p>Nom :  <span><%=resultats[0].nom  %> </span> </p>
+                </li>
+
+                <li class="text_card">
+                    <p>description  :  <span><%=resultats[0].description   %> </span> </p>
+                </li>
+            </ul>
+            <div class="options">
+            <button class="btn deletBtn">Effacer</button>
+            <button class="btn editBtn">Modifier</button>
+            </div>
+        </div>
+     <% } %>
+
+       </div>
+
+ <script src="/js/script_chaussure.js"></script>
+    <script src="/js/serch.js"></script> 
+
+    <style>
+        /* cseleccted color bg */
+
+.colorClass{
+    display: block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+    </style>
+
+</body>
+</html>

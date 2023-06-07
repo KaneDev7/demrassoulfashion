@@ -1,0 +1,21 @@
+.Produits{
+    width: $widthGolbale;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media only screen and (max-width: 1120px) {
+     width: 90%;
+    }
+    .Title{
+        margin-bottom: 80px;
+    }
+    .Produits_content{
+       @include flex;
+       justify-content: center;
+       align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+}

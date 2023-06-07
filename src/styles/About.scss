@@ -1,0 +1,17 @@
+.About{
+    .about_content{
+        max-width: 1000px;
+        width: 80%;
+        margin: 50px auto 50px auto;
+        @include flex_center;
+        flex-direction: column;
+        .about_text{
+            text-align: center;
+            p{
+                font-size: 19px;
+                color: $black_leger;
+                line-height: 25px;
+            }
+        }
+    }
+}
