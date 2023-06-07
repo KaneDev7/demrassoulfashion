@@ -11,13 +11,15 @@ const session = require("express-session");
 
 const myConnection = require("express-myconnection");
 
+require('dotenv').config();
+
 // definition de la base de donnee
 const optiondB = {
-  host: "localhost",
-  user: "root",
-  password: "",
-  port: 3306,
-  database: "demrassoul_db",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+  database: process.env.DB_DATABASE,
 };
 
 const app = express();

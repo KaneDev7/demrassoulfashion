@@ -1,12 +1,13 @@
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
  async function sendEmailToMultipleRecipients(recipients, subject, message) {
   // Créer un transporteur SMTP
   const transporter = nodemailer.createTransport({
     service : 'gmail',
     auth: {
-      user: 'omzokane369@gmail.com',
-      pass: 'ivqgkwztxosensik'
+      user: process.env.NM_EMAIL,
+      pass: process.env.NM_PASSWORD
     }
   });
 
