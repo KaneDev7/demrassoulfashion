@@ -1,5 +1,6 @@
 const upload = require("express-fileupload");
 const sendEmailToMultipleRecipients = require('./sendMail');
+const getCommandFromClient = require('./getCommand')
 const express = require("express");
 const path = require("path");
 const mysql = require("mysql");
@@ -240,8 +241,25 @@ app.post('/sendNew', (req, res)=>{
     });
   });
 });
+})
+
+
+// recevoir des commandes par mail
+
+app.post('/getCommand/:command/:name/:email/:phone', (req, res)=>{
+  const {command,name,phone,email} = req.params
+  console.log(command)
+  try{
+    getCommandFromClient(name,command,phone,email);
+    res.json({message : 'Votre commande a bien été réçu .Nous vous contactrons plus tard'});
+
+  }catch(err){
+    res.json({message : 'Une ereur est survenue reseyer plus tard'});
+
+  }
 
 })
+
 
 //HOME PAGE
 app.get("/", authenticate, (req, res) => {

@@ -361,8 +361,7 @@ Taille : ${seletedSize ? seletedSize : ''}.
 Prix : ${prix} FCFA.
 ______________________________________
 `
-
-             ] } />
+]} />
           </div>
         </div>
         <Shopping />

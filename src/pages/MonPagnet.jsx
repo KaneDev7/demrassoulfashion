@@ -3,22 +3,30 @@ import TopbarFixed from "../components/aurtres/TopbarFixed";
 import Bouton_whatsap from "../components/aurtres/Bouton_whatsap";
 import Title from "../components/aurtres/Title";
 import { reduceTextLength } from "../util";
+import Popup_paiement from "../components/aurtres/Popup_paiement";
 
 function MonPagnet (){
     
     const [maPagnet, setMaPagnet] = useState([])
     const [prixTotal,setPrixTotal] = useState(0)
+    const [poppubBoxVisble, setPopupBoxVisible] = useState(false)
 
+    const handleClick = () =>{
+        setPopupBoxVisible(true)
+    }
+    const onClosePopupBox = (boulean)=>{
+        setPopupBoxVisible(boulean)
+    }
     // importataion de tous les commandes dnas le tableau allCommantArr
     const allCommantArr = maPagnet.map(p =>{
         return `
-Nom: ${p.description}.
-Catégorie : ${p.category}.
-Couleur : ${p.colorNameSelected}
-Taille : ${p.taille ? p.taille : ''}.
-Quantité : ${p.quantity}
-Prix : ${p.prix * p.quantity} FCFA.
-______________________________________
+<p>Nom: ${p.description}</p>,
+<p>Catégorie : ${p.category}</p>,
+<p>Couleur : ${p.colorNameSelected}</p>,
+<p>Taille : ${p.taille ? p.taille : ''}</p>,
+<p>Quantité : ${p.quantity}</p>,
+<p>Prix : ${p.prix * p.quantity} FCFA</p>
+<p>______________________________________</p>
     `
     })
 
@@ -84,6 +92,9 @@ ______________________________________
     },[maPagnet])
 
     return  <>
+    {poppubBoxVisble &&
+    <Popup_paiement commande={allCommantArr} onClosePopupBox={onClosePopupBox} />
+    }
     <TopbarFixed />
     <div className="MonPagnet">
         <ul className="MonPagnet_content">
@@ -108,7 +119,7 @@ ______________________________________
                 </div>
              </div>
                 <div className="pagnetItem_right">
-                <Bouton_whatsap phoneNumber={773749383}
+                {/* <Bouton_whatsap phoneNumber={773749383}
                 text='Commander'
                 message={[`
 Nom: ${p.description}.
@@ -117,7 +128,7 @@ Couleur : ${p.colorNameSelected}
 Taille : ${p.taille ? p.taille : ''}.
 Quantité : ${p.quantity}
 Prix : ${p.prix * p.quantity} FCFA.`
-                ]} />
+                ]} /> */}
                 <div className="choose_Quantity">
                     <span id="reduce" onClick={(e)=> handleUpdateQuantity(p.id,p.taille,p.colorNameSelected,e)}>_</span>
                     <span className='quantity'>{p.quantity}</span>
@@ -133,11 +144,9 @@ Prix : ${p.prix * p.quantity} FCFA.`
            ))
         }
         {maPagnet.length > 0 &&
-            <div className="commandAll">
-             <Bouton_whatsap phoneNumber={773749383}
-             text='Commandez tout '
-              message={allCommantArr} />
-          </div>
+        <div className="commandAll">
+            <button onClick={handleClick} className="ValidBtn">Valider la commande</button>
+        </div>
         }
           
         </ul>

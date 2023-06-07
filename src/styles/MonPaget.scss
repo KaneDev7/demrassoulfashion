@@ -130,16 +130,19 @@
     }
     .commandAll{
         margin-top: 40px;
-        .Bouton_whatsap{
+        .ValidBtn{
             width: 300px;
-            opacity: .9;
-            color: white;
+            height: 40px;
+            margin-top: 20px;
+            outline: none;
+            border:  solid 1px $color_primary;
+            border-radius: $radiusA;
             background: $color_primary;
+            color: $color_secondary;
+            font-size: 1rem;
+            transition: .3s;
             &:hover{
-                opacity: 1;
-            }
-            span{
-                color: white;
+              background: $color_primary_fonce;
             }
 
         }

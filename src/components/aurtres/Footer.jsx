@@ -29,7 +29,6 @@ function Footer() {
             try {
                const response = await axios.post(`http://localhost:3001/clientabonne/${mail}`,);
                setMessage(response.data.message)
-               
                response.data.message !== 'Cette email existe deja sur la liste de nos abonnés'? seMessageType('success') : seMessageType('attention')
                setNewSubscribe(true)
                input.current.value =''

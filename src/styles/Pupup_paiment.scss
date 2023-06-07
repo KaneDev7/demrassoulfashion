@@ -1,0 +1,55 @@
+.Popup_paiement{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    @include flex_center;
+    flex-direction: column;
+    background-color: #00000033;
+    animation: opac .3s;
+
+    .Popup_paiement_content{
+        width: 400px;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 0 6px #858585;
+        border-radius: 3px;
+        flex-direction: column;
+        .Popup_paiement_content_input{
+            width: 100%;
+            margin-top: 20px;
+            label{
+                display: block;
+                margin-bottom: 7px;
+            }
+            input{
+                width: 100%;
+                height: 40px;
+                outline: none;
+                padding: 10px;
+                font-size: 18px;
+                color: $black_leger;
+                border-radius: 3px;
+                border: solid 1px #c4c4c4;
+            }
+        }
+
+        .commandBtn{
+            width: 100px;
+            height: 40px;
+            margin-top: 20px;
+            outline: none;
+            border:  solid 1px $color_primary;
+            border-radius: $radiusA;
+            background: $color_primary;
+            color: $color_secondary;
+            font-size: 1rem;
+            transition: .3s;
+            &:hover{
+              background: $color_primary_fonce;
+            }
+        }
+    }
+}
