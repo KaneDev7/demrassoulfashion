@@ -10,11 +10,13 @@ import {capitalizeFirstLetter, getUniqueProductArr} from "../util";
 import { useParams } from "react-router-dom";
 import { filter_sac_accessoire_arr } from "../cat_db/cat_db_arr";
 import Footer from "../components/aurtres/Footer";
+import Wait from "../components/aurtres/Wait";
 
 function Sacs_accessoires({page}) {
 
   const [produits, setProduits] = useState([])
   const [topbarFixVisble, setTopbarFixVisble] = useState(false)
+  const [isLoading, setIsloading] = useState(false)
 
   const {categorie} = useParams()
 
@@ -24,6 +26,7 @@ function Sacs_accessoires({page}) {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setIsloading(true)
       try {
         const res = await axios.get('http://localhost:3001/collection/article_sacs_accessoires')
         /*recuprèration des données en évitant de dupliquer les articles
@@ -33,9 +36,12 @@ function Sacs_accessoires({page}) {
         // Filtrage des articles selon la catégoreie
         if (categorie !== 'Tout') {
           setProduits(uniqueVetments.reverse().filter(p => p['categorie'] === categorie))
+          setIsloading(false)
 
         } if(categorie === 'Tout' ) {
           setProduits(uniqueVetments.reverse())
+          setIsloading(false)
+
         }
 
       } catch (err) {
@@ -61,7 +67,7 @@ function Sacs_accessoires({page}) {
         
         } />
       <div className="Produits_content">
-        {
+        {!isLoading ?
           produits.map(p => (
               p.imgSrc && <Produit_card 
               key={p.id}
@@ -79,7 +85,8 @@ function Sacs_accessoires({page}) {
 
 
               />
-          ))
+          )):
+          <Wait/>
         }
       </div>
     </div>

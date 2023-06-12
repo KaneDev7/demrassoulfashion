@@ -17,6 +17,10 @@
         box-shadow: 0 0 6px #858585;
         border-radius: 3px;
         flex-direction: column;
+        h2{
+            text-align: center;
+            font-weight: 100;
+        }
         .Popup_paiement_content_input{
             width: 100%;
             margin-top: 20px;
@@ -37,7 +41,7 @@
         }
 
         .commandBtn{
-            width: 100px;
+            width: 100%;
             height: 40px;
             margin-top: 20px;
             outline: none;
@@ -50,6 +54,10 @@
             &:hover{
               background: $color_primary_fonce;
             }
+        }
+        .loading{
+            opacity: .9;
+            pointer-events: none;
         }
     }
 }

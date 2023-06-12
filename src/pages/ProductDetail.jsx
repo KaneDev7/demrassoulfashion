@@ -25,6 +25,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import FlasInfo from '../components/aurtres/FlashInfo';
 import Footer from '../components/aurtres/Footer';
+import Popup_paiement from '../components/aurtres/Popup_paiement';
 
 function ProductDetail() {
 
@@ -41,11 +42,24 @@ function ProductDetail() {
   const [flashInfoActif, setFlahInfoActif] = useState(false)
   const [messageType, seMessageType] = useState('')
   const [message, setMessage] = useState('')
+  const [poppubBoxVisble, setPopupBoxVisible] = useState(false)
 
   
   const siezTag = useRef()
   const colorTag = useRef()
   const imgRef = useRef();
+
+  const handleClick = () =>{
+    setPopupBoxVisible(true)
+}
+  // fermeture du popup paiement
+  const onClosePopupBox = (boulean)=>{
+    setPopupBoxVisible(boulean)
+}
+    // importataion de tous les commandes dnas le tableau allCommantArr
+  //   const allCommandArr = maPagnet.map(p =>{
+  //     return 
+  // })
 
   // flash info
   const onFlashInfoActif = (boolean)=>{
@@ -184,7 +198,18 @@ function ProductDetail() {
 
 
   return <div className="ProductDetail">
-            
+    {poppubBoxVisble &&
+    <Popup_paiement commande={[
+      `
+      <p><span style="font-weight: bold;"> Nom: </span> ${description},</p>
+      <p><span style="font-weight: bold;"> Catégorie : </span> ${category},</p>
+      <p><span style="font-weight: bold;"> Couleur : </span> ${colorNameSelected},</p>
+      <p><span style="font-weight: bold;"> Taille : </span> ${seletedSize ? seletedSize : ''},</p>
+      <p><span style="font-weight: bold;"> Quantité : </span> ${1},</p>
+      <p><span style="font-weight: bold;">Prix : </span>  ${prix} FCFA </p>
+      <p>______________________________________</p>
+       `]} onClosePopupBox={onClosePopupBox} />
+    }
     {flashInfoActif && <FlasInfo 
     info={message}
     messageType={messageType}
@@ -349,19 +374,8 @@ function ProductDetail() {
             onMessageType={onMessageType}
             onInfoFlashContent={onInfoFlashContent}
             />
+            <button onClick={handleClick} className="Bouton_whatsap">Je commande</button>
 
-            <Bouton_whatsap imgSrc={selectImage} phoneNumber={773749383}
-              text='Commander '
-              message={[
-                `
-Nom: ${description}.
-Catégorie : ${category}.  
-Couleur : ${colorNameSelected}
-Taille : ${seletedSize ? seletedSize : ''}.
-Prix : ${prix} FCFA.
-______________________________________
-`
-]} />
           </div>
         </div>
         <Shopping />
@@ -371,7 +385,6 @@ ______________________________________
             <div className="image"> <img src={omIcon} alt="" /> </div>
             <div className="image"> <img src={waveIcon} alt="" /></div>
             <div className="image"> <img src={cashIcon} alt="" /></div>
-
           </div>
         </div>
       </div>

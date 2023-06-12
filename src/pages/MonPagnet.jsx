@@ -14,18 +14,20 @@ function MonPagnet (){
     const handleClick = () =>{
         setPopupBoxVisible(true)
     }
+
     const onClosePopupBox = (boulean)=>{
         setPopupBoxVisible(boulean)
     }
+
     // importataion de tous les commandes dnas le tableau allCommantArr
-    const allCommantArr = maPagnet.map(p =>{
+    const allCommandArr = maPagnet.map(p =>{
         return `
-<p>Nom: ${p.description}</p>,
-<p>Catégorie : ${p.category}</p>,
-<p>Couleur : ${p.colorNameSelected}</p>,
-<p>Taille : ${p.taille ? p.taille : ''}</p>,
-<p>Quantité : ${p.quantity}</p>,
-<p>Prix : ${p.prix * p.quantity} FCFA</p>
+<p><span style="font-weight: bold;"> Nom: </span> ${p.description},</p>
+<p><span style="font-weight: bold;"> Catégorie : </span> ${p.category},</p>
+<p><span style="font-weight: bold;"> Couleur : </span> ${p.colorNameSelected},</p>
+<p><span style="font-weight: bold;"> Taille : </span> ${p.taille ? p.taille : ''},</p>
+<p><span style="font-weight: bold;"> Quantité : </span> ${p.quantity},</p>
+<p><span style="font-weight: bold;">Prix : </span>  ${p.prix * p.quantity} FCFA </p>
 <p>______________________________________</p>
     `
     })
@@ -93,7 +95,7 @@ function MonPagnet (){
 
     return  <>
     {poppubBoxVisble &&
-    <Popup_paiement commande={allCommantArr} onClosePopupBox={onClosePopupBox} />
+    <Popup_paiement commande={allCommandArr} onClosePopupBox={onClosePopupBox} />
     }
     <TopbarFixed />
     <div className="MonPagnet">

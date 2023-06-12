@@ -14,10 +14,10 @@ function FlasInfo ({info, onFlashInfoActif, messageType}){
   
       if (count === 0) {
         // Fermeture de la flashInfo si le déchargement est terminé
-        flasInfoTag.current.classList.add('FlasInfo_hideden')
+        flasInfoTag.current?.classList.add('FlasInfo_hideden')
         setTimeout(()=>{
             onFlashInfoActif(false)
-            flasInfoTag.current.classList.remove('FlasInfo_hideden')
+            flasInfoTag.current?.classList.remove('FlasInfo_hideden')
             setCount(100);
             clearInterval(interval);
         },2000)
@@ -33,7 +33,7 @@ function FlasInfo ({info, onFlashInfoActif, messageType}){
         flasInfoTag.current.classList.add('FlasInfo_hideden')
         setTimeout(()=>{
             onFlashInfoActif(false)
-            flasInfoTag.current.classList.remove('FlasInfo_hideden')
+            flasInfoTag.current?.classList.remove('FlasInfo_hideden')
         },2000)
     }
 

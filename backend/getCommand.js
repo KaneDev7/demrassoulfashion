@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
- async function getCommandFromClient(client,cammande,phone,email) {
+ async function getCommandFromClient(client,cammande,phone) {
   // Créer un transporteur SMTP
   const transporter = nodemailer.createTransport({
     service : 'gmail',
@@ -13,10 +13,10 @@ require('dotenv').config();
 
   // Configurer les options de l'e-mail
   let mailOptions = {
-    from: email,
     to: process.env.NM_EMAIL, 
     subject: `Nouvelle commande de ${client}, tel: ${phone} `,
     html: cammande
+
   };
 
   try {

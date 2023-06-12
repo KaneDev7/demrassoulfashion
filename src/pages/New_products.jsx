@@ -9,6 +9,7 @@ import Title from "../components/aurtres/Title";
 import { useParams } from "react-router-dom";
 import { filter_new_product_arr } from "../cat_db/cat_db_arr";
 import Footer from "../components/aurtres/Footer";
+import Wait from "../components/aurtres/Wait";
 
 function New_products ({page} ){
 
@@ -17,6 +18,8 @@ function New_products ({page} ){
     const [topbarFixVisble, setTopbarFixVisble] = useState(false)
     const [newProducts, setNewProduct] = useState([])
     const [numOfDay, setNumOfDay] = useState(null)
+    const [isLoading, setIsloading] = useState(false)
+
 
     
     const onTopbarFixVisible = (boolean)=>{
@@ -32,7 +35,9 @@ function New_products ({page} ){
 
 
     useEffect(() => {
+      
         const fetchProducts = async () => {
+          setIsloading(true)
             let table_name = categorie === 'vetement' ? 'article_vetement' :
             categorie === 'chaussure' ? 'article_chaussures' :
             'article_sacs_accessoires'
@@ -47,8 +52,8 @@ function New_products ({page} ){
                 calculerDifferenceEnJours(new Date(p.date).toLocaleDateString() ,
                 new Date().toLocaleDateString()) <= numOfDay
            ))
-
-
+           
+           setIsloading(false)
           } catch (err) {
             console.log(err)
           }
@@ -66,7 +71,7 @@ function New_products ({page} ){
     <Filter  filterArr={filter_new_product_arr} page={page} />
       <Title title={capitalizeFirstLetter(categorie) + 's ajoutés récements'} />
     <div className="Produits_content">
-        {
+        {!isLoading ?
             
       newProducts.map(p => (
               p.imgSrc && <Produit_card 
@@ -87,7 +92,8 @@ function New_products ({page} ){
               colorName={p.colorName}
               fromPage='new_product'
               />
-          ))
+          )):
+          <Wait/>
         }
       </div>
     </div>

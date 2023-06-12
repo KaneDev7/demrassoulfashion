@@ -209,12 +209,11 @@ $radiusB: 5px;
     
 }
 .Bouton_whatsap{
-    color: $black_leger;
-    background: $gray_legerb;
+    background: $color_primary;
+    color: $color_secondary;
     opacity: 1;
     &:hover{
-        background: #6ef56e;
-        color: white;
+        background-color: $color_primary_fonce;
     }
     span{
         margin-left: 10px;
@@ -896,6 +895,7 @@ $radiusB: 5px;
     }
     100%{
         transform: translateX(0);
+        
     }
 }
 
@@ -913,7 +913,7 @@ $radiusB: 5px;
         transform: translateX(70px);
     }
     100%{
-        transform: translateX(500px);
+        transform: translateX(1000px);
     }
 }
 

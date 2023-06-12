@@ -2,15 +2,17 @@ import { useState } from "react"
 import Bouton from "./Bouton"
 import axios from "axios"
 import FlasInfo from "./FlashInfo"
+import Title from "./Title"
+import { isValidEmail } from "../../util"
 
 function Popup_paiement ({commande,onClosePopupBox}){
     const [message, setMessage] = useState('')
     const [newCommande, setNewCommande] = useState(false)
     const [messageType, seMessageType] = useState('')
+    const [isLoading ,setIsloading] = useState(false)
     const [inputValue, setInputValue] = useState({
         name : '',
         phone : '',
-        email : ''
     })
 
    // Activation désactivation du onFlashInfoActif
@@ -32,17 +34,25 @@ function Popup_paiement ({commande,onClosePopupBox}){
 
     const handleClick = (e)=>{
         e.preventDefault()
-        let commandText = ''
-        commande.forEach(c => {
-            commandText+=c
-        });
-        console.log(commandText)
 
-        if(inputValue.phone.trim() !== '' && inputValue.name.trim() !== '' && inputValue.email.trim() !== '' ){
-            const response = axios.post(`http://localhost:3001/getCommand/${commandText}/${inputValue.name}/${inputValue.email}/${inputValue.phone}`,);
+        const postData = async () => {
+            try{
+                setIsloading(true)
+                const response = await axios.post(`http://localhost:3001/getCommand/${inputValue.name}/${inputValue.phone}`,{commande})
+            
             setMessage(response.data.message)
-            response.data.message !== 'Une ereur est survenue reseyer plus tard'? seMessageType('success') : seMessageType('attention')
+            response.data.message !== 'Une erreur est survenue, veillez ressayer plus tard'? seMessageType('success') : seMessageType('error')
             setNewCommande(true)
+            setIsloading(false)
+
+            }catch(err){
+                console.log(err)
+            }
+        }
+        if(inputValue.phone.trim() !== '' && inputValue.name.trim() !== '' ){
+            postData()
+            inputValue.phone  = '' 
+             inputValue.name  = '' 
         }
 
     }
@@ -51,14 +61,10 @@ function Popup_paiement ({commande,onClosePopupBox}){
         {newCommande && <FlasInfo onFlashInfoActif={onFlashInfoActif} info={message} messageType={messageType} />}
         <form action="">
         <div className="Popup_paiement_content">
+        <h2 style={{textAlign:'center'}}>Finaliser la commande</h2>
             <div className="Popup_paiement_content_input">
-                <label htmlFor="name" >Votre Nom</label>
+                <label htmlFor="name" >Votre nom</label>
                 <input type="text" name="name" required={true} value={inputValue.name} onChange={handleChange} />
-            </div>
-
-            <div className="Popup_paiement_content_input">
-                <label htmlFor="name">Votre eamil</label>
-                <input type="email" name="email" required={true} value={inputValue.email} onChange={handleChange} />
             </div>
 
             <div className="Popup_paiement_content_input">
@@ -66,8 +72,10 @@ function Popup_paiement ({commande,onClosePopupBox}){
                 <input type="number" name="phone" required={true} value={inputValue.phone} onChange={handleChange} />
             </div>
 
-            <button onClick={handleClick} type="submit" className="commandBtn">Valider</button>
-
+            <button onClick={handleClick} type="submit" className={!isLoading? 'commandBtn ' : 'commandBtn loading'}>
+                {!isLoading ? 'Passer la commande': 'Patientez...'}
+            </button>
+            
         </div>
         </form>
  
