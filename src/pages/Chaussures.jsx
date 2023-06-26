@@ -10,13 +10,11 @@ import {capitalizeFirstLetter, getUniqueProductArr} from "../util";
 import { Route, Routes, useParams } from "react-router-dom";
 import { filter_chaussures_arr } from "../cat_db/cat_db_arr";
 import Footer from "../components/aurtres/Footer";
-import Wait from "../components/aurtres/Wait";
 
 function Chaussures({page}) {
 
   const [produits, setProduits] = useState([])
   const [topbarFixVisble, setTopbarFixVisble] = useState(false)
-  const [isLoading, setIsloading] = useState(false)
 
   const {categorie} = useParams()
 
@@ -26,7 +24,6 @@ function Chaussures({page}) {
   }
 
   useEffect(() => {
-    setIsloading(true)
 
     const fetchProducts = async () => {
       try {
@@ -38,15 +35,12 @@ function Chaussures({page}) {
         // Filtrage des articles selon la catégoreie
         if (categorie !== 'ete' || categorie !== 'hivert' || categorie !== 'Tout') {
           setProduits(uniqueVetments.reverse().filter(p => p['categorie'] === categorie))
-          setIsloading(false)
 
         }  if(categorie === 'ete' || categorie === 'hivert') {
-          setProduits(uniqueVetments.reverse().filter(p => p['saison'] === categorie))
-          setIsloading(false)
+          setProduits(uniqueVetments.reverse().filter(p => p['saison'] === categorie || p['saison'] === 'les deux'))
         
         }if(categorie === 'Tout' ) {
           setProduits(uniqueVetments.reverse())
-          setIsloading(false)
 
         }
 
@@ -73,7 +67,7 @@ function Chaussures({page}) {
         
         } />
       <div className="Produits_content">
-        {!isLoading ?
+        {
           produits.map(p => (
               p.imgSrc && <Produit_card 
               key={p.id}
@@ -89,8 +83,7 @@ function Chaussures({page}) {
               colorName={p.colorName}
               fromPage='undifined'
               />
-          )):
-          <Wait/>
+          ))
         }
       </div>
     </div>

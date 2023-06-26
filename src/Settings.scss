@@ -302,13 +302,14 @@ $radiusB: 5px;
     justify-content: center;
     opacity: 0;
     transition: 1s;
-    //transform:  scale(0.5) translateY(50px);
+    transform:  translateY(300px);
     margin-top: 30px;
     border-radius: 7px;
     }
     .card_collection_visible {
         opacity: 1 ;
-        //animation: logoAnime .5s forwards ease-in;
+        animation: Collection_anim .5s forwards ease-in;
+
     }
     .Bouton{
         margin-top: 40px;
@@ -937,5 +938,12 @@ $radiusB: 5px;
 @keyframes navAnime {
     to{
         opacity: 1;
+    }
+}
+
+
+@keyframes Collection_anim{
+    to{
+        transform: translateY(0);
     }
 }

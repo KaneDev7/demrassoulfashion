@@ -32,7 +32,7 @@ function Home ( {onUpdateFilterFocus, onUpdateFilterTitle } ){
           }
         },{ 
           root: null,
-          rootMargin : '-50%',
+          rootMargin : '-0%',
         })
         collection.forEach(element => {
           observer.observe(element)

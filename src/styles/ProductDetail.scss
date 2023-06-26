@@ -68,10 +68,11 @@
                 overflow: hidden;     
                   img{
                     width: 100%;
+                    min-height: 400px;
+                    object-fit: cover;
                     border-radius: 7px;
                     transition: .1s;
                     cursor: zoom-in;
-                   
                   }
                   .img_zoom_out{
                     //cursor: zoom-in;

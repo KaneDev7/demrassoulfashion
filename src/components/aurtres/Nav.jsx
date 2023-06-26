@@ -228,6 +228,7 @@ function Nav({ deffaulClasse, storageState }) {
                                             ) ? 'article_vetement' :
                                                 (p.categorie.toLowerCase() === 'sandale' ||
                                                     p.categorie.toLowerCase() === 'chaussure de sport' ||
+                                                    p.categorie.toLowerCase() === 'chaussure fermée' ||
                                                     p.categorie.toLowerCase() === 'talon'
                                                 ) ? 'article_chaussures' : 'article_sacs_accessoires'}/${p.colorName}/${(p.categorie.toLowerCase() === 'combinaison' ||
                                                     p.categorie.toLowerCase() === 'enssemble' ||
@@ -236,6 +237,7 @@ function Nav({ deffaulClasse, storageState }) {
                                                 ) ? 'vetement_actif' :
                                                     (p.categorie.toLowerCase() === 'sandale' ||
                                                         p.categorie.toLowerCase() === 'chaussure de sport' ||
+                                                        p.categorie.toLowerCase() === 'chaussure fermée' ||
                                                         p.categorie.toLowerCase() === 'talon'
                                                     ) ? 'chaussure_actif' : 'sacs_accessoires_actif'
                                                 }/undefined/${p.id}`}>
