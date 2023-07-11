@@ -13,7 +13,7 @@ require('dotenv').config();
 
   // Configurer les options de l'e-mail
   let mailOptions = {
-    from: 'omzokane369@gmail.com',
+    from: 'sidilefou56@gmail.com',
     to: recipients.join(', '), // Séparez les destinataires par une virgule
     subject: subject,
     text: message
