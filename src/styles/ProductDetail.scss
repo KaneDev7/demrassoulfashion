@@ -171,7 +171,6 @@
                         background: $color_primary;
                         color: $color_secondary;
                         border: 2px solid transparent;
-    
                     }
                     }
                 }
@@ -195,8 +194,8 @@
                         height: 22px;
                         border-radius: 50%;
                         position: relative;
-                        transition: .1s;
-                    
+                        border: solid 1px #0000003a;    
+                        //box-shadow:  0 0  2px #0000006c;                
                     }
                     .colorSelected{
                         width: 30px;

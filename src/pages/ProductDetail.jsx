@@ -226,6 +226,7 @@ function ProductDetail() {
           <NavLink to={deffaulClasse === 'vetement_actif' && fromPage !== 'new_product' ? `/Vetements/Tout` :
             deffaulClasse === 'chaussure_actif' && fromPage !== 'new_product' ? '/Chaussures/Tout' :
               deffaulClasse === 'sacs_accessoires_actif' && fromPage !== 'new_product' ? '/Sacs_accessoires/Tout' :
+
                 `/NewProducts/${category.toLocaleLowerCase() === 'robe' ||
                  category.toLocaleLowerCase() === 'combinaison' ||
                   category.toLocaleLowerCase() === 'traditionnel' ||
@@ -233,7 +234,8 @@ function ProductDetail() {
 
                    category.toLocaleLowerCase() === 'talon' ||
                    category.toLocaleLowerCase() === 'sandale' ||
-                    category.toLocaleLowerCase() === 'chaussure de sport'? 'chaussure':
+                    category.toLocaleLowerCase() === 'chaussure de sport' ||
+                    category.toLocaleLowerCase() === 'chaussure fermée'? 'chaussure':
                   'sac & accessoire'
                   } `
 
@@ -270,7 +272,7 @@ function ProductDetail() {
          zoomOutFactor={1.3}
          animationDuration={50}
          >
-
+          
         <img ref={imgRef}
           src={require('../images/' + selectImage)} alt="" />
         </QuickPinchZoom>
